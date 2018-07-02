@@ -6,13 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :carts
 
-#  def current_cart
-#    self.current_cart_id = current_cart_id
-#  end
-#  def checkout
-#    current_user.current_cart = nil
-#  end
-
   def create_current_cart
     new_cart = carts.create
     self.current_cart_id = new_cart.id

@@ -15,14 +15,6 @@ class Cart < ActiveRecord::Base
     self.update(status: "submitted")
   end
 
-  #def current_cart
-  #  if self.find_by_id(current_user.current_cart_id) == nil
-  #    self.build(user_id: current_user.id)
-  #  else
-  #    self.find_by_id(current_user.current_cart_id)
-  #  end
-  #end
-
   def total
     @items_total = []
     self.line_items.each do |item|
@@ -44,11 +36,5 @@ class Cart < ActiveRecord::Base
     end
     @current_line_item
   end
-
-  #def new_record
-  #  if @line_item.id != Item.find_by_id(@line_item.id)
-  #    @line_item.save
-  #  end
-  #end
 
 end
