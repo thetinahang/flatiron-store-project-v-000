@@ -1,7 +1,9 @@
-<% @categories.each do |category| %>
-  <%= link_to category.title, category_path(category) %>
-<% end %>
+<h3>Welcome!</h3>
 
-<% @items.each do |item| %>
-  <p><%= item.title %> | <%= number_to_currency(item.price) %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %></p>
-<% end %>
+<h4>Categories:</h4> <% Category.all.each do |category| %>
+<strong><%= link_to "#{category.title}", category_path(category) %></strong><br>
+<% end %><br><br>
+
+<h4>Available Items:</h4> <% Item.all.each do |item| %>
+<strong><%="#{number_to_currency(item.price.to_f/100)}"%> <%= link_to "#{item.title},", item_path(item) if item.inventory > 0 %> <%= button_to "Add to Cart", line_items_path(item_id: item)%></strong>
+<% end %><br><br>
